@@ -80,11 +80,11 @@ router.get('/clientes/:id', async (req, res) => {
 
 // POST/cliente
 router.post('/cliente', async (req, res) =>{
-  let { nombre, apellido, puntos, dni, numeroDeAfiliado, direccion, telefono, obraSocial } = req.body;
+  let { nombre, apellido, puntos, dni, numeroDeAfiliado, direccion, telefono, notas, obraSocial } = req.body;
 
 try{
   
-  let clienteCreado = await Cliente.create({ nombre, apellido, puntos, dni, numeroDeAfiliado, direccion, telefono });
+  let clienteCreado = await Cliente.create({ nombre, apellido, puntos, dni, numeroDeAfiliado, direccion, telefono, notas });
  
   if(obraSocial && obraSocial.length > 0){
     let obraSocialDb = await ObraSocial.findAll({
@@ -135,7 +135,7 @@ router.delete('/cliente/:id', async (req, res) => {
 // PUT/cliente/:id
 router.put('/cliente/:id', async (req, res) => {
   const { id } = req.params;
-  const { nombre, apellido, puntos, dni, numeroDeAfiliado, direccion, telefono, obraSocial } = req.body;
+  const { nombre, apellido, puntos, dni, numeroDeAfiliado, direccion, telefono, notas, obraSocial } = req.body;
 
   try {
 
@@ -152,7 +152,8 @@ router.put('/cliente/:id', async (req, res) => {
       dni,
       numeroDeAfiliado,
       direccion,
-      telefono
+      telefono,
+      notas,
     });
 
     let obraSocialDb = await ObraSocial.findAll({

@@ -41,6 +41,10 @@ module.exports = (sequelize) => {
     telefono: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    notas: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   });
 };
